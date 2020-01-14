@@ -31,7 +31,11 @@ Cel i misja: Pomoc dla osób nie posiadających miejsca zamieszkania
     }
     public static List<Category> createCategories() {
         List<Category> categories = Arrays.asList(
-                Category.builder().name("Odzież").build()
+                Category.builder().name("ubrania, które nadają się do ponownego użycia").build(),
+                Category.builder().name("ubrania, do wyrzucenia").build(),
+                Category.builder().name("zabawki").build(),
+                Category.builder().name("książki").build(),
+                Category.builder().name("inne").build()
         );
         return categories;
     }
