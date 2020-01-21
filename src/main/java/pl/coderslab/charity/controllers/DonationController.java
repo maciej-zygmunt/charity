@@ -1,10 +1,9 @@
 package pl.coderslab.charity.controllers;
 
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import pl.coderslab.charity.dao.CategoryDao;
 import pl.coderslab.charity.dao.DonationDao;
 import pl.coderslab.charity.dao.InstitutionDao;
@@ -28,15 +27,22 @@ public class DonationController {
     }
 
     @GetMapping(path = "/add")
-    public String donation(Model model) {
+    public String donationGet(Model model) {
         Donation donation= new Donation();
+        model.addAttribute("donation",donation);
+        model.addAttribute("rwCategories", donation.getCategories());
         return "form";
     }
-    @ModelAttribute("categories")
+    @PostMapping(path="/add")
+    public String donationPost(@ModelAttribute Donation donation) {
+        System.out.println(donation);
+        return "index";
+    }
+    @ModelAttribute("categoriesList")
     public List<Category> listCategories() {
         return categoryDao.findAll();
     }
-    @ModelAttribute("institutions")
+    @ModelAttribute("institutionsList")
     public List<Institution> listInstitutions() {
         return institutionDao.findAll();
     }

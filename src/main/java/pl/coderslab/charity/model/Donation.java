@@ -44,6 +44,7 @@ public class Donation {
     private Institution institution;
     private String street;
     private String city;
+    private String phone;
     private String zipCode;
     private Date pickupDate;
     private Time pickupTime;
