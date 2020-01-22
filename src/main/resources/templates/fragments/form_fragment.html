@@ -23,23 +23,24 @@
         <div class="form--steps-counter">Krok <span>1</span>/4</div>
 
         <!--/*@thymesVar id="donation" type="pl.coderslab.charity.model.Donation"*/-->
-        <form th:action="@{/donation/add}" th:object="${donation}" method="post" >
+        <form th:action="@{/donation/add}" th:object="${donation}" method="post">
             <!-- STEP 1: class .active is switching steps -->
             <div data-step="1" class="active">
                 <h3>Zaznacz co chcesz oddać:</h3>
                 <!--/*@thymesVar id="categories" type="List<pl.coderslab.charity.model.Category>"*/-->
 
                 <th:block th:each="categoryItem, info: ${categoriesList}">
-                <div class="form-group form-group--checkbox">
-<!--                    <div class = "form-group form-group&#45;&#45;checkbox">-->
-                    <label>
-<!--                        <span class="checkbox" th:for="${#ids.next('categories')}"></span>-->
-                        <input type="checkbox" th:field="*{categories}" th:value="${categoryItem.id}" />
-                        <span class="checkbox"></span>
-<!--                        <input type="checkbox"  th:value="${categoryItem.id}" />-->
-                        <span  class="description" th:for="${#ids.prev('categories')}" th:text="${categoryItem.name}">ubrania, które nadają się do ponownego użycia</span>
-                    </label>
-                </div>
+                    <div class="form-group form-group--checkbox">
+                        <!--                    <div class = "form-group form-group&#45;&#45;checkbox">-->
+                        <label>
+                            <!--                        <span class="checkbox" th:for="${#ids.next('categories')}"></span>-->
+                            <input type="checkbox" th:field="*{categories}" th:value="${categoryItem.id}"/>
+                            <span class="checkbox"></span>
+                            <!--                        <input type="checkbox"  th:value="${categoryItem.id}" />-->
+                            <span class="description" th:for="${#ids.prev('categories')}"
+                                  th:text="${categoryItem.name}">ubrania, które nadają się do ponownego użycia</span>
+                        </label>
+                    </div>
                 </th:block>
 
                 <div class="form-group form-group--buttons">
@@ -54,7 +55,7 @@
                 <div class="form-group form-group--inline">
                     <label>
                         Liczba 60l worków:
-                        <input type="number" name="bags" step="1" min="1" th:field="${donation.quantity}" />
+                        <input type="number" name="bags" step="1" min="1" th:field="${donation.quantity}"/>
                     </label>
                 </div>
 
@@ -65,24 +66,22 @@
             </div>
 
 
-
             <!-- STEP 4 -->
             <div data-step="3">
                 <h3>Wybierz organizacje, której chcesz pomóc:</h3>
                 <th:block th:each="institution, iStat: ${institutionsList}">
-                <div class="form-group form-group--checkbox">
-                    <label>
-                        <input type="radio" th:field="*{institution}" name="organization" value="old" th:value="${institution.id}"  />
-                        <span class="checkbox radio"></span>
-                        <span class="description">
-                  <div class="title" th:for="${#ids.prev('institution')}" th:text="${institution.name}">Fundacja “Bez domu”</div>
-                  <div class="subtitle" th:text="|Cel i misja: ${institution.description}|">
-                    Cel i misja: Pomoc dla osób nie posiadających miejsca
-                    zamieszkania
-                  </div>
-                </span>
-                    </label>
-                </div>
+                    <div class="form-group form-group--checkbox">
+                        <label>
+                            <input type="radio" th:field="*{institution}" value="old" th:value="${institution.id}"/>
+                            <span class="checkbox radio"></span>
+                            <span class="description">
+                                <div class="title" th:for="${#ids.prev('institution')}" th:text="${institution.name}">Fundacja “Bez domu”</div>
+                                <div class="subtitle" th:text="|Cel i misja: ${institution.description}|">
+                                    Cel i misja: Pomoc dla osób nie posiadających miejsca zamieszkania
+                                </div>
+                            </span>
+                        </label>
+                    </div>
                 </th:block>
 
                 <div class="form-group form-group--buttons">
@@ -99,22 +98,22 @@
                     <div class="form-section--column">
                         <h4>Adres odbioru</h4>
                         <div class="form-group form-group--inline">
-                            <label> Ulica <input type="text" name="address" th:field="${donation.street}"/> </label>
+                            <label> Ulica <input type="text" th:field="${donation.street}" /> </label>
                         </div>
 
                         <div class="form-group form-group--inline">
-                            <label> Miasto <input type="text" name="city" th:field="${donation.city}"/> </label>
+                            <label> Miasto <input type="text" th:field="${donation.city}" /> </label>
                         </div>
 
                         <div class="form-group form-group--inline">
                             <label>
-                                Kod pocztowy <input type="text" name="postcode" th:field="${donation.zipCode}"/>
+                                Kod pocztowy <input type="text" th:field="${donation.zipCode}" />
                             </label>
                         </div>
 
                         <div class="form-group form-group--inline">
                             <label>
-                                Numer telefonu <input type="phone" name="phone" th:field="${donation.phone}"/>
+                                Numer telefonu <input type="text" th:field="${donation.phone}" />
                             </label>
                         </div>
                     </div>
@@ -153,13 +152,15 @@
                         <ul>
                             <li>
                                 <span class="icon icon-bag"></span>
-                                <span id="categories" class="summary--text" >4 worki ubrań w dobrym stanie dla dzieci</span
+                                <span id="categories"
+                                      class="summary--text">4 worki ubrań w dobrym stanie dla dzieci</span
                                 >
                             </li>
 
                             <li>
                                 <span class="icon icon-hand"></span>
-                                <span class="summary--text" th:text='|Dla fundacji \" ${donation.institution}\" |'>Dla fundacji "Mam marzenie" w Warszawie</span
+                                <span class="summary--text"
+                                      id="organization">Dla fundacji "Mam marzenie" w Warszawie</span
                                 >
                             </li>
                         </ul>
@@ -169,19 +170,19 @@
                         <div class="form-section--column">
                             <h4>Adres odbioru:</h4>
                             <ul>
-                                <li th:text="${donation.street}">Prosta 51</li>
-                                <li th:text="${donation.city}">Warszawa</li>
-                                <li th:text="${donation.zipCode}">99-098</li>
-                                <li th:text="${donation.phone}">123 456 789</li>
+                                <li id="addressOut">Prosta 51</li>
+                                <li id="cityOut">Warszawa</li>
+                                <li id="zipCodeOut">99-098</li>
+                                <li id="phoneOut">123 456 789</li>
                             </ul>
                         </div>
 
                         <div class="form-section--column">
                             <h4>Termin odbioru:</h4>
                             <ul>
-                                <li th:text="${donation.pickupDate}">13/12/2018</li>
-                                <li th:text="${donation.pickupTime}">15:40</li>
-                                <li th:text="${donation.pickupComment}">Brak uwag</li>
+                                <li id="pickupDateOut">13/12/2018</li>
+                                <li id="pickupTimeOut">15:40</li>
+                                <li id="pickupCommentOut">Brak uwag</li>
                             </ul>
                         </div>
                     </div>

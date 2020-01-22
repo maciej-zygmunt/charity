@@ -156,6 +156,15 @@ document.addEventListener("DOMContentLoaded", function () {
             let categoriesText=$("input[name='quantity']")[0].value +" worków "+categories.join("; ");
             console.log("Selected categories are: " + categoriesText);
             $("#categories")[0].innerText=categoriesText;
+            let organization =$("input[name='institution']:checked ~ .description > .title")[0].innerText;
+            $("#organization")[0].innerText=organization;
+            $("#addressOut")[0].innerText=$("input[name='street']")[0].value;
+            $("#cityOut")[0].innerText=$("input[name='city']")[0].value;
+            $("#zipCodeOut")[0].innerText=$("input[name='zipCode']")[0].value;
+            $("#phoneOut")[0].innerText=$("input[name='phone']")[0].value;
+            $("#pickupDateOut")[0].innerText=$("#pickupDate")[0].value;
+            $("#pickupTimeOut")[0].innerText=$("#pickupTime")[0].value;
+            $("#pickupCommentOut")[0].innerText=$("#pickupComment")[0].value;
         }
 
         /**
