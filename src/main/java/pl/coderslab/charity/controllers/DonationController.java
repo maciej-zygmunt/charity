@@ -36,7 +36,7 @@ public class DonationController {
     @PostMapping(path="/add")
     public String donationPost(@ModelAttribute Donation donation) {
         donationDao.save(donation);
-        return "index";
+        return "form-confirmation";
     }
     @ModelAttribute("categoriesList")
     public List<Category> listCategories() {
