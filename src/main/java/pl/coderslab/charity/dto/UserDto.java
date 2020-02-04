@@ -1,4 +1,4 @@
-package pl.coderslab.charity.adapters;
+package pl.coderslab.charity.dto;
 
 import lombok.experimental.Delegate;
 import pl.coderslab.charity.model.IUser;
@@ -8,7 +8,7 @@ import javax.validation.constraints.AssertTrue;
 
 public class UserDto {
 
-    private @Delegate
+    private final @Delegate
     IUser user;
 
     private String password2;
@@ -17,9 +17,6 @@ public class UserDto {
         this.user = new User();
     }
 
-    public UserDto(User user) {
-        this.user = user;
-    }
 
     public User getUser() {
         return (User) this.user;

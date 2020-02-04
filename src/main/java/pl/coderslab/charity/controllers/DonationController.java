@@ -1,9 +1,11 @@
 package pl.coderslab.charity.controllers;
 
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import pl.coderslab.charity.dao.CategoryDao;
 import pl.coderslab.charity.dao.DonationDao;
 import pl.coderslab.charity.dao.InstitutionDao;
@@ -16,9 +18,9 @@ import java.util.List;
 @Controller
 @RequestMapping(path="/donation")
 public class DonationController {
-    private DonationDao donationDao;
-    private CategoryDao categoryDao;
-    private InstitutionDao institutionDao;
+    private final DonationDao donationDao;
+    private final CategoryDao categoryDao;
+    private final InstitutionDao institutionDao;
 
     public DonationController(DonationDao donationDao, CategoryDao categoryDao, InstitutionDao institutionDao) {
         this.donationDao = donationDao;
@@ -27,14 +29,14 @@ public class DonationController {
     }
 
     @GetMapping(path = "/add")
-    public String donationGet(Model model) {
+    public String getDonation(Model model) {
         Donation donation= new Donation();
         model.addAttribute("donation",donation);
         model.addAttribute("rwCategories", donation.getCategories());
         return "form";
     }
     @PostMapping(path="/add")
-    public String donationPost(@ModelAttribute Donation donation) {
+    public String saveDonation(@ModelAttribute Donation donation) {
         donationDao.save(donation);
         return "form-confirmation";
     }

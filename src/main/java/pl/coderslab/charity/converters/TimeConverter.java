@@ -7,8 +7,7 @@ public class TimeConverter implements Converter<String, Time> {
     @Override
     public Time convert(String s) {
         try {
-            Time t = Time.valueOf(s+":00");
-            return t;
+            return  Time.valueOf(s+":00");
         } catch (Exception e) {
             return null;
         }

@@ -20,20 +20,6 @@ import java.util.List;
 @Builder
 @Table(name="donations")
 public class Donation {
-    /*
-
-    id
-    quantity (liczba worków)
-    categories (lista obiektów typu Category), pamiętaj o odpowiedniej adnotacji
-    institution (obiekt typu Institution), pamiętaj o odpowiedniej adnotacji.
-    street
-    city
-    zipCode
-    pickUpDate
-    pickUpTime
-    pickUpComment
-
-     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
