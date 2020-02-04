@@ -1,19 +1,19 @@
 <html lang="pl" xmlns:th="http://www.thymeleaf.org">
 <section class="login-page">
     <h2>Załóż konto</h2>
-    <!--/*@thymesVar id="user" type="pl.coderslab.charity.model.User"*/-->
-    <form th:action="@{/registration/add}" th:object="${user}" method="post">
+    <!--/*@thymesVar id="userDto" type="pl.coderslab.charity.dto.IUserDto"*/-->
+    <form th:action="@{/registration/add}" th:object="${userDto}" method="post">
         <div class="form-group">
-            <input type="email" name="email" placeholder="Email" th:field="${user.email}"/>
+            <input type="email" name="email" placeholder="Email" th:field="${userDto.email}"/>
         </div>
         <div class="form-group">
-            <input type="password" name="password" placeholder="Hasło" th:field="${user.password}"/>
+            <input type="password" name="password" placeholder="Hasło" th:field="${userDto.password}"/>
         </div>
         <div class="form-group">
-            <input type="password" name="password2" placeholder="Powtórz hasło" th:field="${user.password2}"/>
+            <input type="password" name="password2" placeholder="Powtórz hasło" th:field="${userDto.password2}"/>
         </div>
         <div class="form-group">
-            <p th:errors="${user}"></p>
+            <p th:errors="${userDto}"></p>
         </div>
         <ul class="form-group" style="color: red">
             <li th:each="e : ${#fields.detailedErrors()}" th:class="${e.global}? globalerr : fielderr">

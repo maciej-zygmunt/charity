@@ -17,23 +17,19 @@ import java.util.Set;
 @NoArgsConstructor
 @Entity
 @Table(name = "users")
-public class User {
+public class User implements IUser {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String email;
 //    @Size(min = 3,max=4)
     private String password;
-    @Transient
-    private String password2;
+
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
-    @AssertTrue(message = "Passwords should be same")
-    public boolean isPasswordSame() {
-        return password.equals(password2);
-    }
+
 
 }

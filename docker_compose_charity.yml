@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  mysql:
+    image: mysql:5.7
+    container_name: mysql
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    restart: always
+    environment:
+      MYSQL_DATABASE: sys
+      MYSQL_ROOT_PASSWORD: coderslab
+    volumes:
+      - ./docker/db:/docker-entrypoint-initdb.d
+    ports:
+      - "3309:3306"
+
+
+
+  charity:
+    image: charity
+    container_name: charity-lab_embeded
+
+    ports:
+      - "8083:8080"
+    links:
+      - mysql
+
+

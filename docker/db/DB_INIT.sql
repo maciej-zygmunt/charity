@@ -1,0 +1,4 @@
+DROP SCHEMA IF EXISTS `charity`;
+CREATE SCHEMA IF NOT EXISTS `charity`
+    CHARACTER SET utf8
+    COLLATE utf8_unicode_ci;

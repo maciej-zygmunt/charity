@@ -1,7 +1,7 @@
 <html lang="pl" xmlns:th="http://www.thymeleaf.org">
 <div class="slogan container container--90">
-    <h2>
-        Witaj użytkowniku.
+    <h2 th:text="|Witaj ${username}|">
+        Witaj użytkowniku
     </h2>
 </div>
 </html>
