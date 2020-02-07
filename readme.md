@@ -6,3 +6,5 @@ Portfolio Lab project for CodersLab.
 * Spring Data
 * Thymeleafs
 * Lombock
+* JavaScript 
+* jQuery
