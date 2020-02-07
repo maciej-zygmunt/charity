@@ -9,25 +9,17 @@
 
         <ul class="help--slides-items">
             <!--/*@thymesVar id="institutions" type="pl.coderslab.charity.model.Institution"*/-->
-            <th:block th:each="institution, iterStat: ${institutions} " th:class="${iterStat.odd}? 'odd'" >
-                <th:block th:if="${iterStat.odd}"><li></th:block>
-                <div class="col">
-                    <div class="title" th:text="${institution.name}">Fundacja "Dbam o Zdrowie"</div>
-                    <div class="subtitle" th:text="|Cel i misja: ${institution.description}|">Cel i misja: Pomoc dzieciom z ubogich rodzin.</div>
+            <th:block th:each="institution, iStat: ${institutions} " >
+                <div th:class="${iStat.odd} ? 'box-list after-box' : 'box-list'">
+                    <div th:if="${iStat.even}"></div>
+                        <div class="col">
+                        <div class="title" th:text="${institution.name}">Fundacja "Dbam o Zdrowie"</div>
+                        <div class="subtitle" th:text="|Cel i misja: ${institution.description}|">Cel i misja: Pomoc dzieciom z ubogich rodzin.></div>
+                        </div>
+                    <div th:if="${iStat.odd}"></div>
                 </div>
-                <th:block th:if="${iterStat.odd} and ${iterStat.last}">
-                    <div class="col" style="display: none" >
-                        <div class="title" > ...</div>
-                        <div class="subtitle" > ...</div>
-                    </div>
-                </th:block>
-                <th:block th:if="${iterStat.even} or ${iterStat.last}"></li></th:block>
             </th:block>
-
         </ul>
-
-
     </div>
-
 </section>
 </html>
